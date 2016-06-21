@@ -6,7 +6,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
-use Kunstmaan\AdminBundle\Entity\BaseUser;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Kunstmaan\AdminBundle\Entity\EntityInterface;
 use Kunstmaan\AdminBundle\Entity\User;
 use Kunstmaan\AdminBundle\FlashMessages\FlashTypes;
@@ -69,7 +69,7 @@ class NodeAdminController extends Controller
     protected $authorizationChecker;
 
     /**
-     * @var BaseUser $user
+     * @var UserInterface $user
      */
     protected $user;
 
@@ -1163,13 +1163,13 @@ class NodeAdminController extends Controller
 
     /**
      * @param EntityManager   $em       The Entity Manager
-     * @param BaseUser        $user     The user who deletes the children
+     * @param UserInterface   $user     The user who deletes the children
      * @param string          $locale   The locale that was used
      * @param ArrayCollection $children The children array
      */
     private function deleteNodeChildren(
         EntityManager $em,
-        BaseUser $user,
+        UserInterface $user,
         $locale,
         ArrayCollection $children
     )
