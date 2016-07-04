@@ -67,7 +67,7 @@ class GroupsController extends BaseSettingsController
 
         /* @var $em EntityManager */
         $em = $this->getDoctrine()->getManager();
-        $group = new Group();
+        $group = new Group("ROLE_DEFAULT", array());
         $form = $this->createForm(GroupType::class, $group);
 
         if ($request->isMethod('POST')) {

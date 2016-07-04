@@ -71,7 +71,7 @@ class UserType extends AbstractType implements RoleDependentUserFormInterface
             $builder->add('enabled', CheckboxType::class, array('required' => false, 'label' => 'settings.user.enabled'))
                     ->add('groups', EntityType::class, array(
                             'label' => 'settings.user.roles',
-                            'class' => 'KunstmaanAdminBundle:Group',
+                            'class' => 'ZizooUserBundle:Group',
                             'query_builder' => function(EntityRepository $er) {
                                 return $er->createQueryBuilder('g')
                                     ->orderBy('g.name', 'ASC');
