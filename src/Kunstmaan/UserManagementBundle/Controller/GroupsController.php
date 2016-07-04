@@ -5,12 +5,15 @@ namespace Kunstmaan\UserManagementBundle\Controller;
 use Doctrine\ORM\EntityManager;
 
 use Kunstmaan\AdminBundle\Controller\BaseSettingsController;
-use Kunstmaan\AdminBundle\Entity\Group;
+//use Kunstmaan\AdminBundle\Entity\Group;
+use Zizoo\UserBundle\Entity\Group as Group;
 use Kunstmaan\AdminBundle\FlashMessages\FlashTypes;
-use Kunstmaan\AdminBundle\Form\GroupType;
+//use Kunstmaan\AdminBundle\Form\GroupType;
+use Zizoo\Bundle\CmsBundle\Form\GroupType;
 use Kunstmaan\AdminListBundle\AdminList\AdminList;
 
-use Kunstmaan\UserManagementBundle\AdminList\GroupAdminListConfigurator;
+//use Kunstmaan\UserManagementBundle\AdminList\GroupAdminListConfigurator;
+use Zizoo\Bundle\CmsBundle\AdminList\GroupAdminListConfigurator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -108,7 +111,7 @@ class GroupsController extends BaseSettingsController
         /* @var $em EntityManager */
         $em = $this->getDoctrine()->getManager();
         /* @var Group $group */
-        $group = $em->getRepository('KunstmaanAdminBundle:Group')->find($id);
+        $group = $em->getRepository('ZizooUserBundle:Group')->find($id);
         $form = $this->createForm(GroupType::class, $group);
 
         if ($request->isMethod('POST')) {
@@ -152,7 +155,7 @@ class GroupsController extends BaseSettingsController
 
         /* @var $em EntityManager */
         $em = $this->getDoctrine()->getManager();
-        $group = $em->getRepository('KunstmaanAdminBundle:Group')->find($id);
+        $group = $em->getRepository('ZizooUserBundle:Group')->find($id);
         if (!is_null($group)) {
             $em->remove($group);
             $em->flush();
