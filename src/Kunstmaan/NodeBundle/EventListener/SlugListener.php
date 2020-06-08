@@ -9,7 +9,7 @@ use Kunstmaan\NodeBundle\Event\SlugSecurityEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpKernel\Controller\ControllerResolver;
+use Symfony\Component\HttpKernel\Controller\ControllerResolverInterface;
 
 class SlugListener
 {
@@ -19,7 +19,7 @@ class SlugListener
     protected $em;
 
     /**
-     * @var ControllerResolver
+     * @var ControllerResolverInterface
      */
     protected $resolver;
 
@@ -30,10 +30,10 @@ class SlugListener
 
     /**
      * @param EntityManager $entityManager
-     * @param ControllerResolver $resolver
+     * @param ControllerResolverInterface $resolver
      * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct(EntityManager $entityManager, ControllerResolver $resolver, EventDispatcherInterface $eventDispatcher)
+    public function __construct(EntityManager $entityManager, ControllerResolverInterface $resolver, EventDispatcherInterface $eventDispatcher)
     {
         $this->em = $entityManager;
         $this->resolver = $resolver;
