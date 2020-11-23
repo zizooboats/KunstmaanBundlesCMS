@@ -305,6 +305,7 @@ class TranslatorController extends AdminListController
               'uid' => $translation->getId()
             ), 200);
         } catch (\Exception $e) {
+            $this->get('bugsnag')->notifyException($e);
             return new Response($translator->trans('translator.translator.fatal_error_occurred'), 500);
         }
     }
