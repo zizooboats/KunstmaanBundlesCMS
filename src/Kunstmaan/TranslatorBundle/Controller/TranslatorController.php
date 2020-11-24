@@ -291,10 +291,12 @@ class TranslatorController extends AdminListController
             } else {
                 // Create new translation
                 $translation = new Translation();
+                $translationId = isset($values['translationId']) && ((int) $values['translationId'] !== 0)
+                    ? (int) $values['translationId'] : null;
                 $translation->setDomain($values['domain']);
                 $translation->setKeyword($values['keyword']);
                 $translation->setLocale($values['locale']);
-                $translation->setTranslationId($values['translationId']);
+                $translation->setTranslationId($translationId);
             }
             $translation->setText($values['value']);
             $em->persist($translation);
